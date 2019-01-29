@@ -6,6 +6,11 @@
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/gradle" />
         <option name="gradleHome" value="/Documents/GitHub/gradle/bin/gradle" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/gradle" />
+          </set>
+        </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
