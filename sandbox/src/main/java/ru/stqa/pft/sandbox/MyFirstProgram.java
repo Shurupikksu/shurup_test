@@ -6,7 +6,7 @@ public class MyFirstProgram {
 		hello("world");
 		hello("жопа");
 
-		Square s = new Square(5); // обьект s типа square
+		Square s = new Square(10); // обьект s типа square
 		System.out.println("Площадь квадрата со стороной " + s.l + " = " + s.area()); // вызов метода area экземпляра square
 
 		Rectangle r = new Rectangle(4, 6);
