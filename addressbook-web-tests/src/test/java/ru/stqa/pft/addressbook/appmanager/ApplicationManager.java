@@ -2,7 +2,6 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.concurrent.TimeUnit;
 
@@ -11,6 +10,11 @@ import static org.testng.Assert.fail;
 public class ApplicationManager {
     WebDriver driver;
 
+    public void submitContactCreation() {
+        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]")).click();
+    }
+
+    private ContactHelper contactHelper;
     private SessionHelper sessionHelper;
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
@@ -29,6 +33,7 @@ public class ApplicationManager {
         groupHelper = new GroupHelper(driver);
         navigationHelper = new NavigationHelper(driver);
         sessionHelper = new SessionHelper(driver);
+        contactHelper = new ContactHelper(driver);
 
         sessionHelper.login("admin", "secret");
     }
@@ -76,31 +81,7 @@ public class ApplicationManager {
       }
     }
 
-    public void submitContactCreation() {
-      driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]")).click();
-    }
 
-    public void goToAddContactForm() {
-      driver.findElement(By.linkText("add new")).click();
-    }
-
-    public void fillContactInfo(ContactData contactData) {
-      driver.findElement(By.name("firstname")).click();
-      driver.findElement(By.name("firstname")).clear();
-      driver.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
-      driver.findElement(By.name("middlename")).clear();
-      driver.findElement(By.name("middlename")).sendKeys(contactData.getMiddlename());
-      driver.findElement(By.name("lastname")).clear();
-      driver.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
-      driver.findElement(By.name("nickname")).clear();
-      driver.findElement(By.name("nickname")).sendKeys(contactData.getNickname());
-      driver.findElement(By.name("company")).click();
-      driver.findElement(By.name("company")).clear();
-      driver.findElement(By.name("company")).sendKeys(contactData.getCompany());
-      driver.findElement(By.name("address")).click();
-      driver.findElement(By.name("address")).clear();
-      driver.findElement(By.name("address")).sendKeys(contactData.getAddress());
-    }
 
     public GroupHelper getGroupHelper() {
         return groupHelper;
@@ -108,5 +89,9 @@ public class ApplicationManager {
 
     public NavigationHelper getNavigationHelper() {
         return navigationHelper;
+    }
+
+    public ContactHelper getContactHelper() {
+        return contactHelper;
     }
 }
