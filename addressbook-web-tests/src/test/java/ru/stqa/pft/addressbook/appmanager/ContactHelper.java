@@ -25,4 +25,12 @@ public class ContactHelper extends HelperBase {
       type(By.name("company"), contactData.getCompany());
       type(By.name("address"),contactData.getAddress());
     }
+
+    public void initContactModify() {
+        click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Moscow'])[1]/following::td[4]"));
+    }
+
+    public void submitContactModify() {
+        click(By.xpath("(//input[@name='update'])[2]"));
+    }
 }
